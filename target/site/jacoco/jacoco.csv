@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+praktikum,de.hfu,Queue,12,69,1,5,0,14,1,5,0,3
+praktikum,de.hfu,Util,0,20,0,6,0,4,0,5,0,2
+praktikum,de.hfu,App,22,0,0,0,7,0,2,0,2,0
+praktikum,de.hfu.residents.service,BaseResidentService,17,209,11,35,6,50,11,20,0,8
+praktikum,de.hfu.residents.service,ResidentServiceException,0,4,0,0,0,2,0,1,0,1
+praktikum,de.hfu.residents.repository,ResidentRepositoryStub,0,17,0,0,0,5,0,3,0,3
+praktikum,de.hfu.residents.domain,Resident,23,33,0,0,12,12,6,6,6,6

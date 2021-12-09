@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseResidentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">praktikum</a> &gt; <a href="index.source.html" class="el_package">de.hfu.residents.service</a> &gt; <span class="el_source">BaseResidentService.java</span></div><h1>BaseResidentService.java</h1><pre class="source lang-java linenums">package de.hfu.residents.service;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import de.hfu.residents.domain.Resident;
+import de.hfu.residents.repository.ResidentRepository;
+import de.hfu.residents.repository.ResidentRepositoryStub;
+
+/**
+ * @author Stefan Betermieux
+ *
+ */
+
+public class BaseResidentService implements ResidentService {
+
+  private ResidentRepository residentRepository;
+
+
+  
+<span class="fc" id="L24">  public BaseResidentService() {</span>
+<span class="fc" id="L25">  }</span>
+  
+  /**
+   * @param filterResident
+   * @throws ResidentServiceException
+   */
+  @Override
+	public Resident getUniqueResident(Resident filterResident) throws ResidentServiceException {
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">    if (containsWildcards(filterResident)) {</span>
+<span class="nc" id="L34">      throw new ResidentServiceException(&quot;Wildcards (*) sind nicht erlaubt!&quot;);</span>
+    }
+<span class="fc" id="L36">    List&lt;Resident&gt; residents = getFilteredResidentsList(filterResident);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">    if (residents.size() == 1) {</span>
+<span class="fc" id="L38">      return residents.get(0);</span>
+    } else {
+<span class="fc" id="L40">      throw new ResidentServiceException(&quot;Suchanfrage lieferte kein eindeutiges Ergebnis!&quot;);</span>
+    }
+  }
+
+  /**
+   * @param filterResident
+   * @return
+   */
+  @Override
+	public List&lt;Resident&gt; getFilteredResidentsList(Resident filterResident) {
+<span class="fc" id="L50">    List&lt;Resident&gt; filteredResidents = new ArrayList&lt;Resident&gt;();</span>
+
+<span class="fc" id="L52">    Pattern givenNamePattern = compileFilterPattern(filterResident.getGivenName());</span>
+<span class="fc" id="L53">    Pattern familyNamePattern = compileFilterPattern(filterResident.getFamilyName());</span>
+<span class="fc" id="L54">    Pattern streetPattern = compileFilterPattern(filterResident.getStreet());</span>
+<span class="fc" id="L55">    Calendar calendarFilter = null;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">    if (filterResident.getDateOfBirth() != null) {</span>
+<span class="fc" id="L57">      calendarFilter = Calendar.getInstance();</span>
+<span class="fc" id="L58">      calendarFilter.setTime(filterResident.getDateOfBirth());      </span>
+    }
+    
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    for (Resident resident: residentRepository.getResidents()) {</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">      if (matchesFilter(resident, givenNamePattern, familyNamePattern, streetPattern, calendarFilter)) {</span>
+<span class="fc" id="L63">        filteredResidents.add(resident);</span>
+      }
+<span class="fc" id="L65">    }</span>
+<span class="fc" id="L66">    return filteredResidents;</span>
+  }
+  
+  private boolean containsWildcards(Resident data) {
+<span class="pc bpc" id="L70" title="2 of 4 branches missed.">    if ((data.getGivenName() != null) &amp;&amp; (data.getGivenName().indexOf(&quot;*&quot;) != -1)) {</span>
+<span class="nc" id="L71">      return true;</span>
+    }
+<span class="pc bpc" id="L73" title="2 of 4 branches missed.">    if ((data.getFamilyName() != null) &amp;&amp; (data.getFamilyName().indexOf(&quot;*&quot;) != -1)) {</span>
+<span class="nc" id="L74">      return true;</span>
+    }
+<span class="pc bpc" id="L76" title="2 of 4 branches missed.">    if ((data.getStreet() != null) &amp;&amp; (data.getStreet().indexOf(&quot;*&quot;) != -1)) {</span>
+<span class="nc" id="L77">      return true;</span>
+    }
+<span class="fc" id="L79">    return false;</span>
+  }
+  
+  private Pattern compileFilterPattern(String attribute) {
+<span class="pc bpc" id="L83" title="1 of 4 branches missed.">    if ((attribute == null) || (attribute.trim().length() == 0)) {</span>
+<span class="fc" id="L84">      return null;</span>
+    } else {
+<span class="fc" id="L86">      return Pattern.compile(attribute.trim().toLowerCase().replaceAll(&quot;\\*&quot;, &quot;.*?&quot;));      </span>
+    }
+  }
+  
+  private boolean matchesFilter(Resident current, Pattern givenNamePattern, Pattern familyNamePattern, Pattern streetPattern, Calendar calendarFilter) {
+<span class="fc bfc" id="L91" title="All 2 branches covered.">    if (!matchesAttribute(current.getGivenName(), givenNamePattern)) {</span>
+<span class="fc" id="L92">      return false;</span>
+    }
+<span class="fc bfc" id="L94" title="All 2 branches covered.">    if (!matchesAttribute(current.getFamilyName(), familyNamePattern)) {</span>
+<span class="fc" id="L95">      return false;</span>
+    }
+<span class="fc bfc" id="L97" title="All 2 branches covered.">    if (!matchesAttribute(current.getStreet(), streetPattern)) {</span>
+<span class="fc" id="L98">      return false;</span>
+    }
+<span class="fc bfc" id="L100" title="All 2 branches covered.">    if (calendarFilter != null) {</span>
+<span class="fc" id="L101">      Calendar calendarCurrent = Calendar.getInstance();</span>
+<span class="fc" id="L102">      calendarCurrent.setTime(current.getDateOfBirth());</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">      if (calendarFilter.get(Calendar.YEAR) != calendarCurrent.get(Calendar.YEAR)) {</span>
+<span class="fc" id="L104">        return false;</span>
+      }
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">      if (calendarFilter.get(Calendar.MONTH) != calendarCurrent.get(Calendar.MONTH)) {</span>
+<span class="nc" id="L107">        return false;</span>
+      }
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">      if (calendarFilter.get(Calendar.DAY_OF_MONTH) != calendarCurrent.get(Calendar.DAY_OF_MONTH)) {</span>
+<span class="nc" id="L110">        return false;</span>
+      }      
+    }
+<span class="fc" id="L113">    return true;</span>
+  }
+
+  private boolean matchesAttribute(String originalCurrent, Pattern pattern) {
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">    String current = (originalCurrent == null ? null: originalCurrent.trim().toLowerCase());</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">    if (pattern == null) {</span>
+<span class="fc" id="L119">      return true;</span>
+    }
+<span class="fc" id="L121">    Matcher matcher = pattern.matcher(current);</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">    if (matcher.matches()) {</span>
+<span class="fc" id="L123">      return true;</span>
+    }
+<span class="fc" id="L125">    return false;</span>
+  }
+
+  public void setResidentRepository(ResidentRepository residentRepository) {
+<span class="fc" id="L129">    this.residentRepository = residentRepository;</span>
+<span class="fc" id="L130">  }</span>
+   
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

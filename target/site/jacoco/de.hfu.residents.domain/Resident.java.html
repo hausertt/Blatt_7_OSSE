@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Resident.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">praktikum</a> &gt; <a href="index.source.html" class="el_package">de.hfu.residents.domain</a> &gt; <span class="el_source">Resident.java</span></div><h1>Resident.java</h1><pre class="source lang-java linenums">package de.hfu.residents.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @author Stefan Betermieux
+ *
+ */
+public class Resident implements Serializable {
+
+  private String givenName;
+  private String familyName;
+  private String street;
+  private String city;
+  private Date dateOfBirth;
+  
+  public Resident() {
+<span class="nc" id="L19">    super();</span>
+<span class="nc" id="L20">  }</span>
+  
+  public Resident(String givenName, String familyName, String street, String city, Date dateOfBirth) {
+<span class="fc" id="L23">    super();</span>
+<span class="fc" id="L24">    this.givenName = givenName;</span>
+<span class="fc" id="L25">    this.familyName = familyName;</span>
+<span class="fc" id="L26">    this.street = street;</span>
+<span class="fc" id="L27">    this.city = city;</span>
+<span class="fc" id="L28">    this.dateOfBirth = dateOfBirth;</span>
+<span class="fc" id="L29">  }</span>
+
+  public String getGivenName() {
+<span class="fc" id="L32">    return givenName;</span>
+  }
+
+  public void setGivenName(String givenName) {
+<span class="nc" id="L36">    this.givenName = givenName;</span>
+<span class="nc" id="L37">  }</span>
+
+  public String getFamilyName() {
+<span class="fc" id="L40">    return familyName;</span>
+  }
+
+  public void setFamilyName(String familyName) {
+<span class="nc" id="L44">    this.familyName = familyName;</span>
+<span class="nc" id="L45">  }</span>
+
+  public String getStreet() {
+<span class="fc" id="L48">    return street;</span>
+  }
+
+  public void setStreet(String street) {
+<span class="nc" id="L52">    this.street = street;</span>
+<span class="nc" id="L53">  }</span>
+
+  public String getCity() {
+<span class="fc" id="L56">    return city;</span>
+  }
+
+  public void setCity(String city) {
+<span class="nc" id="L60">    this.city = city;</span>
+<span class="nc" id="L61">  }</span>
+
+  public Date getDateOfBirth() {
+<span class="fc" id="L64">    return dateOfBirth;</span>
+  }
+
+  public void setDateOfBirth(Date dateOfBirth) {
+<span class="nc" id="L68">    this.dateOfBirth = dateOfBirth;</span>
+<span class="nc" id="L69">  }</span>
+  
+  
+  
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
