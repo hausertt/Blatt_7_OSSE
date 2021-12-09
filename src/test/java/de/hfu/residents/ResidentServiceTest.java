@@ -74,23 +74,12 @@ public class ResidentServiceTest {
         Resident resident3_copy = new Resident("Herbert","Groenemaier","Diestraßer 1","Bielefeld", new Date(2000,01,01));
         Resident filterResident_assertFalse = new Resident("","","","",new Date());
 
-        try {
-            residentService.getUniqueResident(resident1_copy);  // True
-            assert(false);
-        } catch (AssertionError e) {
-        }
 
-        try {
-            residentService.getUniqueResident(resident2_copy);  // True
-            assert(false);
-        } catch (AssertionError e) {
-        }
+        residentService.getUniqueResident(resident1_copy);  // True
 
-        try {
-            residentService.getUniqueResident(resident3_copy);  // True
-            assert(false);
-        } catch (AssertionError e) {
-        }
+        residentService.getUniqueResident(resident2_copy);  // True
+
+        residentService.getUniqueResident(resident3_copy);  // True
 
         try {
             residentService.getUniqueResident(filterResident_assertFalse);  //False
