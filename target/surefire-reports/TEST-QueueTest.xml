@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="QueueTest" time="0.001" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="QueueTest" time="0.002" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="DE"/>
     <property name="sun.boot.library.path" value="C:\Users\hato0\.jdks\openjdk-17.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\hato0\AppData\Local\Temp\surefire9479952412491856816\surefirebooter11785402944721010896.jar C:\Users\hato0\AppData\Local\Temp\surefire9479952412491856816 2021-12-09T12-12-07_168-jvmRun1 surefire1396060464366669590tmp surefire_03151974732171951247tmp"/>
+    <property name="sun.java.command" value="C:\Users\hato0\AppData\Local\Temp\surefire13295541522292355881\surefirebooter17922660407895652575.jar C:\Users\hato0\AppData\Local\Temp\surefire13295541522292355881 2021-12-09T12-13-49_652-jvmRun1 surefire11940708428897426760tmp surefire_013786076341941022418tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\hato0\IdeaProjects\Blatt_7_OSSE\target\test-classes;C:\Users\hato0\IdeaProjects\Blatt_7_OSSE\target\classes;C:\Users\hato0\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\hato0\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\hato0\.m2\repository\org\easymock\easymock\3.6\easymock-3.6.jar;C:\Users\hato0\.m2\repository\org\objenesis\objenesis\2.6\objenesis-2.6.jar;C:\Users\hato0\.m2\repository\org\hamcrest\hamcrest-library\1.3\hamcrest-library-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\hato0\AppData\Local\Temp\surefire9479952412491856816\surefirebooter11785402944721010896.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\hato0\AppData\Local\Temp\surefire13295541522292355881\surefirebooter17922660407895652575.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.1+12-39"/>
