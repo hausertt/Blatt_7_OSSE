@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.hfu</groupId>
     <artifactId>praktikum</artifactId>
@@ -14,53 +12,61 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <!-- für das Praktikum "Integrationstest"-->
+        <!--  für das Praktikum "Integrationstest" -->
         <dependency>
-              <groupId>org.easymock</groupId>
-              <artifactId>easymock</artifactId>
-              <version>3.6</version>
-              <scope>test</scope>
-            </dependency>
-            <dependency>
-              <groupId>org.hamcrest</groupId>
-              <artifactId>hamcrest-library</artifactId>
-              <version>1.3</version>
-              <scope>test</scope>
-            </dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>3.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+    <reporting>
+        <plugins>
 
+            <!--  für das Praktikum "Integrationstest" -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
+            </plugin>
+        </plugins>
+    </reporting>
     <build>
         <plugins>
-            <!-- für das Praktikum "Build Management"-->
+            <!--  für das Praktikum "Build Management" -->
 
-            <!-- für das Praktikum "Integrationstest"-->
+            <!--  für das Praktikum "Integrationstest" -->
             <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.6</version>
-                    <executions>
-                      <execution>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
+                <executions>
+                    <execution>
                         <id>default-prepare-agent</id>
                         <goals>
-                          <goal>prepare-agent</goal>
+                            <goal>prepare-agent</goal>
                         </goals>
-                      </execution>
-                      <execution>
+                    </execution>
+                    <execution>
                         <id>default-report</id>
                         <goals>
-                          <goal>report</goal>
+                            <goal>report</goal>
                         </goals>
-                      </execution>
-                    </executions>
-                  </plugin>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <pluginManagement>
-            <!--
-             lock down plugins versions to avoid using Maven defaults (may be moved to parent pom)
-            -->
+            <!--  lock down plugins versions to avoid using Maven defaults (may be moved to parent pom)  -->
             <plugins>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
@@ -69,6 +75,12 @@
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -98,6 +110,18 @@
                     <version>3.0.0</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>de.hfu/main</mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <artifactId>maven-install-plugin</artifactId>
                     <version>2.5.2</version>
                 </plugin>
@@ -120,9 +144,7 @@
         <repository>
             <id>central</id>
             <name>central maven repo</name>
-            <url>
-                https://repo.informatik.hs-furtwangen.de/repository/central/
-            </url>
+            <url>https://repo.informatik.hs-furtwangen.de/repository/central/</url>
         </repository>
     </repositories>
 </project>
