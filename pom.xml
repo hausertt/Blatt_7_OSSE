@@ -31,7 +31,6 @@
     </dependencies>
     <reporting>
         <plugins>
-
             <!--  für das Praktikum "Integrationstest" -->
             <plugin>
                 <groupId>org.jacoco</groupId>

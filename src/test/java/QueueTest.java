@@ -1,9 +1,10 @@
 import static org.junit.Assert.assertTrue;
 
+import de.hfu.Queue;
 import org.junit.*;
 
 /**
- * Unit test for Queue
+ * Unit test for de.hfu.Queue
  */
 public class QueueTest
 {

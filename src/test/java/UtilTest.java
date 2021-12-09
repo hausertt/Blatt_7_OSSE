@@ -1,12 +1,13 @@
 import static org.junit.Assert.*;
 
+import de.hfu.Util;
 import org.junit.Test;
 
 /**
- * Unit test for Util
+ * Unit test for de.hfu.Util
  */
 
-public class UtilTest extends Util{
+public class UtilTest extends Util {
 
     @Test
     public void istErstesHalbjahr_test(){

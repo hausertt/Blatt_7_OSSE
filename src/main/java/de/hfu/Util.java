@@ -1,3 +1,5 @@
+package de.hfu;
+
 public class Util {
 
 	public static boolean istErstesHalbjahr(int monat){
